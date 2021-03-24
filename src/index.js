@@ -5,7 +5,8 @@ import './css/style.min.css';
 //import './images/'
 
 import selectClub from './scripts/selectClub'
+import  regForFreeVisit from './scripts/regForFreeVisit'
 
-console.log(selectClub)
 selectClub();
+regForFreeVisit()
 console.log(1);
