@@ -1,12 +1,20 @@
+
+import './index.html';
+
 import './css/font-awesome.min.css';
 
 import './css/style.min.css';
 
-//import './images/'
+import selectClubs from './modules/selectClubs'
+// import selectTheClub from './modules/selectTheClub'
+import  regForFreeVisit from './modules/regForFreeVisit'
+import  reCallMe from './modules/reCallMe'
+import togglePopup from './modules/burgerMenu'
+import scrollBurgerMenu from './modules/scrollBurgerMenu'
 
-import selectClub from './scripts/selectClub'
-import  regForFreeVisit from './scripts/regForFreeVisit'
+selectClubs();
 
-selectClub();
-regForFreeVisit()
-console.log(1);
+regForFreeVisit();
+reCallMe();
+togglePopup();
+scrollBurgerMenu();
