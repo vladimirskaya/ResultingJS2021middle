@@ -215,7 +215,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_font_awesome_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/font-awesome.min.css */ "./css/font-awesome.min.css");
 /* harmony import */ var _css_style_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/style.min.css */ "./css/style.min.css");
 /* harmony import */ var _modules_selectClubs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/selectClubs */ "./modules/selectClubs.js");
-/* harmony import */ var _modules_selectTheClub__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/selectTheClub */ "./modules/selectTheClub.js");
+/* harmony import */ var _modules_sendForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sendForm */ "./modules/sendForm.js");
 /* harmony import */ var _modules_regForFreeVisit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/regForFreeVisit */ "./modules/regForFreeVisit.js");
 /* harmony import */ var _modules_reCallMe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/reCallMe */ "./modules/reCallMe.js");
 /* harmony import */ var _modules_burgerMenu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/burgerMenu */ "./modules/burgerMenu.js");
@@ -230,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_modules_selectClubs__WEBPACK_IMPORTED_MODULE_3__.default)();
-(0,_modules_selectTheClub__WEBPACK_IMPORTED_MODULE_4__.default)();
+(0,_modules_sendForm__WEBPACK_IMPORTED_MODULE_4__.default)();
 (0,_modules_regForFreeVisit__WEBPACK_IMPORTED_MODULE_5__.default)();
 (0,_modules_reCallMe__WEBPACK_IMPORTED_MODULE_6__.default)();
 (0,_modules_burgerMenu__WEBPACK_IMPORTED_MODULE_7__.default)();
@@ -408,8 +408,12 @@ function selectClubs() {
             li.addEventListener('click', function (event) {
               if (event.target === li.children[0]) {
                 event.preventDefault();
-                console.dir(event.target);
-                window.location = event.target.href;
+                console.log(event.target);
+                /*
+                todo:
+                1. вызвать функцию из модуля,
+                обрабатывающего инфу по выбранному клубу.
+                Уточнить в инете - возможно ли просто отослаться на выбранную страницу.*/
               } // target = event.target;
 
             });
@@ -422,27 +426,40 @@ function selectClubs() {
 
 /***/ }),
 
-/***/ "./modules/selectTheClub.js":
-/*!**********************************!*\
-  !*** ./modules/selectTheClub.js ***!
-  \**********************************/
+/***/ "./modules/sendForm.js":
+/*!*****************************!*\
+  !*** ./modules/sendForm.js ***!
+  \*****************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ selectTheClub; }
+/* harmony export */   "default": function() { return /* binding */ sendForm; }
 /* harmony export */ });
-function selectTheClub() {//     const doc = document.querySelector('body'),
-  //     //док  - для дальнейшего создания единого слушателя для всех событий
-  //     doc.addEventListener('click', event => {
-  //         let target = event.target;
-  //         if (clubsList.contains(target)) {
-  //             console.log(target);
-  //         } else {
-  //             clubList.classList.remove('open');
-  //         }
-  //     })
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function sendForm() {
+  var errorMessage = 'Что-то пошло не так. Обратитесь, пожалуйста, позже.',
+      loadMessage = 'Передача данных...',
+      successMessage = 'Спасибо! Мы скоро с Вами свяжемся!',
+      statusMessage = document.createElement('div');
+
+  var forms = _toConsumableArray(document.forms);
+
+  console.log(forms);
+  /*отправлено, ошибка). В последних двух состояниях 
+  необходимо заменить сам контент модального окна на оповещение. */
 }
 
 /***/ }),
@@ -2019,14 +2036,290 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 
 /***/ }),
 
+/***/ "../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js":
+/*!********************************************************************************!*\
+  !*** ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js ***!
+  \********************************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+
+/* eslint-env browser */
+
+/*
+  eslint-disable
+  no-console,
+  func-names
+*/
+var normalizeUrl = __webpack_require__(/*! ./normalize-url */ "../node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js");
+
+var srcByModuleId = Object.create(null);
+var noDocument = typeof document === 'undefined';
+var forEach = Array.prototype.forEach;
+
+function debounce(fn, time) {
+  var timeout = 0;
+  return function () {
+    var self = this; // eslint-disable-next-line prefer-rest-params
+
+    var args = arguments;
+
+    var functionCall = function functionCall() {
+      return fn.apply(self, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(functionCall, time);
+  };
+}
+
+function noop() {}
+
+function getCurrentScriptUrl(moduleId) {
+  var src = srcByModuleId[moduleId];
+
+  if (!src) {
+    if (document.currentScript) {
+      src = document.currentScript.src;
+    } else {
+      var scripts = document.getElementsByTagName('script');
+      var lastScriptTag = scripts[scripts.length - 1];
+
+      if (lastScriptTag) {
+        src = lastScriptTag.src;
+      }
+    }
+
+    srcByModuleId[moduleId] = src;
+  }
+
+  return function (fileMap) {
+    if (!src) {
+      return null;
+    }
+
+    var splitResult = src.split(/([^\\/]+)\.js$/);
+    var filename = splitResult && splitResult[1];
+
+    if (!filename) {
+      return [src.replace('.js', '.css')];
+    }
+
+    if (!fileMap) {
+      return [src.replace('.js', '.css')];
+    }
+
+    return fileMap.split(',').map(function (mapRule) {
+      var reg = new RegExp("".concat(filename, "\\.js$"), 'g');
+      return normalizeUrl(src.replace(reg, "".concat(mapRule.replace(/{fileName}/g, filename), ".css")));
+    });
+  };
+}
+
+function updateCss(el, url) {
+  if (!url) {
+    if (!el.href) {
+      return;
+    } // eslint-disable-next-line
+
+
+    url = el.href.split('?')[0];
+  }
+
+  if (!isUrlRequest(url)) {
+    return;
+  }
+
+  if (el.isLoaded === false) {
+    // We seem to be about to replace a css link that hasn't loaded yet.
+    // We're probably changing the same file more than once.
+    return;
+  }
+
+  if (!url || !(url.indexOf('.css') > -1)) {
+    return;
+  } // eslint-disable-next-line no-param-reassign
+
+
+  el.visited = true;
+  var newEl = el.cloneNode();
+  newEl.isLoaded = false;
+  newEl.addEventListener('load', function () {
+    if (newEl.isLoaded) {
+      return;
+    }
+
+    newEl.isLoaded = true;
+    el.parentNode.removeChild(el);
+  });
+  newEl.addEventListener('error', function () {
+    if (newEl.isLoaded) {
+      return;
+    }
+
+    newEl.isLoaded = true;
+    el.parentNode.removeChild(el);
+  });
+  newEl.href = "".concat(url, "?").concat(Date.now());
+
+  if (el.nextSibling) {
+    el.parentNode.insertBefore(newEl, el.nextSibling);
+  } else {
+    el.parentNode.appendChild(newEl);
+  }
+}
+
+function getReloadUrl(href, src) {
+  var ret; // eslint-disable-next-line no-param-reassign
+
+  href = normalizeUrl(href, {
+    stripWWW: false
+  }); // eslint-disable-next-line array-callback-return
+
+  src.some(function (url) {
+    if (href.indexOf(src) > -1) {
+      ret = url;
+    }
+  });
+  return ret;
+}
+
+function reloadStyle(src) {
+  if (!src) {
+    return false;
+  }
+
+  var elements = document.querySelectorAll('link');
+  var loaded = false;
+  forEach.call(elements, function (el) {
+    if (!el.href) {
+      return;
+    }
+
+    var url = getReloadUrl(el.href, src);
+
+    if (!isUrlRequest(url)) {
+      return;
+    }
+
+    if (el.visited === true) {
+      return;
+    }
+
+    if (url) {
+      updateCss(el, url);
+      loaded = true;
+    }
+  });
+  return loaded;
+}
+
+function reloadAll() {
+  var elements = document.querySelectorAll('link');
+  forEach.call(elements, function (el) {
+    if (el.visited === true) {
+      return;
+    }
+
+    updateCss(el);
+  });
+}
+
+function isUrlRequest(url) {
+  // An URL is not an request if
+  // It is not http or https
+  if (!/^https?:/i.test(url)) {
+    return false;
+  }
+
+  return true;
+}
+
+module.exports = function (moduleId, options) {
+  if (noDocument) {
+    console.log('no window.document found, will not HMR CSS');
+    return noop;
+  }
+
+  var getScriptSrc = getCurrentScriptUrl(moduleId);
+
+  function update() {
+    var src = getScriptSrc(options.filename);
+    var reloaded = reloadStyle(src);
+
+    if (options.locals) {
+      console.log('[HMR] Detected local css modules. Reload all css');
+      reloadAll();
+      return;
+    }
+
+    if (reloaded) {
+      console.log('[HMR] css reload %s', src.join(' '));
+    } else {
+      console.log('[HMR] Reload all css');
+      reloadAll();
+    }
+  }
+
+  return debounce(update, 50);
+};
+
+/***/ }),
+
+/***/ "../node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js":
+/*!*************************************************************************!*\
+  !*** ../node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js ***!
+  \*************************************************************************/
+/***/ (function(module) {
+
+"use strict";
+
+
+/* eslint-disable */
+function normalizeUrl(pathComponents) {
+  return pathComponents.reduce(function (accumulator, item) {
+    switch (item) {
+      case '..':
+        accumulator.pop();
+        break;
+
+      case '.':
+        break;
+
+      default:
+        accumulator.push(item);
+    }
+
+    return accumulator;
+  }, []).join('/');
+}
+
+module.exports = function (urlString) {
+  urlString = urlString.trim();
+
+  if (/^data:/i.test(urlString)) {
+    return urlString;
+  }
+
+  var protocol = urlString.indexOf('//') !== -1 ? urlString.split('//')[0] + '//' : '';
+  var components = urlString.replace(new RegExp(protocol, 'i'), '').split('/');
+  var host = components[0].toLowerCase().replace(/\.$/, '');
+  components[0] = '';
+  var path = normalizeUrl(components);
+  return protocol + host + path;
+};
+
+/***/ }),
+
 /***/ "./css/font-awesome.min.css":
 /*!**********************************!*\
   !*** ./css/font-awesome.min.css ***!
   \**********************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ (function(module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 "use strict";
-module.exports = __webpack_require__.p + "d41d52acd7a6a75ee075.css";
+module.exports = __webpack_require__.p + "0ef61a8fb7f2ff0a248c.css";
 
 /***/ }),
 
@@ -2034,10 +2327,10 @@ module.exports = __webpack_require__.p + "d41d52acd7a6a75ee075.css";
 /*!***************************!*\
   !*** ./css/style.min.css ***!
   \***************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ (function(module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 "use strict";
-module.exports = __webpack_require__.p + "f289b7a0e28fe805d2c7.css";
+module.exports = __webpack_require__.p + "a2746eb1e130273d3e31.css";
 
 /***/ }),
 
@@ -10991,7 +11284,7 @@ module.exports = __webpack_require__.p + "a85397ff7905d49e610f.jpg";
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "c7a5aaf14a2159b85e6c"; }
+/******/ 		__webpack_require__.h = function() { return "b5dcdbc52d8f83d0dc2c"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

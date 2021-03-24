@@ -17,8 +17,12 @@ export default function selectClubs() {
                         li.addEventListener('click', (event) =>{
                             if (event.target === li.children[0]){
                                 event.preventDefault();
-                                console.dir(event.target);
-                                window.location = event.target.href;   
+                                console.log(event.target);
+                                /*
+                                todo:
+                                1. вызвать функцию из модуля,
+                                обрабатывающего инфу по выбранному клубу.
+                                Уточнить в инете - возможно ли просто отослаться на выбранную страницу.*/  
                             }
                             // target = event.target;
                             

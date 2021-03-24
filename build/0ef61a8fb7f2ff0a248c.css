@@ -1,9 +1,10 @@
 // extracted by mini-css-extract-plugin
 export {};
     if(module.hot) {
-      // 1616618906777
+      // 1616621141332
       var cssReload = require("/home/lkz/Рабочий стол/diplom_middle/node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"publicPath":"../","locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
     }
   
+/*# sourceMappingURL=0ef61a8fb7f2ff0a248c.css.map*/
