@@ -1,5 +1,4 @@
-export default function togglePopup() {
-    
+export default function togglePopup() { 
     const  doc = document.querySelector('body'); 
     openPopup = document.querySelectorAll('.popup'),
 
