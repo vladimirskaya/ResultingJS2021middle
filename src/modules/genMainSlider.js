@@ -8,7 +8,7 @@ export default function genMainSlider(){
 
     function changeSlide(){
         sliders.forEach((elem,index) => {
-            /console.log('mainIndex', mainIndex);
+            //console.log('mainIndex', mainIndex);
             elem.style.display = 'none';
             if (index === mainIndex){
                 elem.style.display = 'flex';
