@@ -17,9 +17,10 @@ export default function appearBurgerMenu() {
     //
     const beforeScrollCoord = topMenu.getBoundingClientRect();
     window.addEventListener(`scroll`, () => {
-       if (window.pageYOffset > beforeScrollCoord.y){
+        let clientWidth = document.documentElement.clientWidth;
+       if (window.pageYOffset > beforeScrollCoord.y && clientWidth < 768){
         topMenu.style.position = 'fixed';
-       }else{
+       }else if  (window.pageYOffset <= beforeScrollCoord.y){
         topMenu.style.position = 'initial';
        }
     }, false);
