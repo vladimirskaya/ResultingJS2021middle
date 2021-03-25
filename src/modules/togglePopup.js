@@ -12,15 +12,18 @@ export default function togglePopup() {
         gift = document.querySelector('#gift');
        
         doc.addEventListener('click', event => {
-            let target = event.target;
-            // console.log('target', target);
-            if (target === openPopup) freeVisitForm.style.display = 'block';
-            if (target === callbackBtn) callbackForm.style.display = 'block';
-            if (target.closest('div') === fixedGift) {
-                gift.style.display = 'block';  
-                fixedGift.style.display = 'none';
-                // console.log('closeBtn',closeBtn);
-            }        
+            let target = event.target,
+                purpose;
+
+            if (target === openPopup) purpose = freeVisitForm;
+            if (target === callbackBtn) purpose = callbackForm;
+            if (target.closest('div') === fixedGift) purpose = gift;
+
+            if (!!purpose){
+                purpose.style.display = 'block';
+                if (purpose === gift) fixedGift.style.display = 'none';
+            } 
+                
             if ( target.className === 'overlay' || target.className === 'close_icon' || target === closeBtn ) {
                 freeVisitForm.style.display = 'none';
                 callbackForm.style.display = 'none';

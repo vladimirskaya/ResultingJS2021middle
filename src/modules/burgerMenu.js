@@ -20,7 +20,7 @@ export default function appearBurgerMenu() {
        if (window.pageYOffset > beforeScrollCoord.y){
         topMenu.style.position = 'fixed';
        }else{
-        topMenu.style.position = 'relative';
+        topMenu.style.position = 'initial';
        }
     }, false);
 
