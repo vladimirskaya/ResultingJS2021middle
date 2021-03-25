@@ -5,16 +5,18 @@ import './css/font-awesome.min.css';
 
 import './css/style.min.css';
 
-import selectClubs from './modules/selectClubs'
-import sendForms from './modules/sendForm'
-import  regForFreeVisit from './modules/regForFreeVisit'
-import  reCallMe from './modules/reCallMe'
 import togglePopup from './modules/burgerMenu'
-import scrollBurgerMenu from './modules/scrollBurgerMenu'
+import appearBurgerMenu from './modules/burgerMenu'
+import selectClubs from './modules/selectClubs'
 
-selectClubs();
-sendForms()
-regForFreeVisit();
-reCallMe();
+import checkInputFormData from './modules/checkInputFormData'
+import sendForm from './modules/sendForm'
+
+
 togglePopup();
+appearBurgerMenu();
 scrollBurgerMenu();
+selectClubs();
+
+checkInputFormData();
+sendForm();

@@ -1,5 +1,5 @@
-export default function togglePopup() {
-    const popupMenuLarge = document.querySelector('.popup-menu'), // popup-menu hidden-large ДОБАВИТЬ АНИМАЦИЮ
+export default function appearBurgerMenu() {
+    const topMenu = document.querySelector('.top-menu'), // popup-menu hidden-large ДОБАВИТЬ АНИМАЦИЮ
         menuButtonLarge = document.querySelector('.menu-button'), // menu-button hidden-large
         ulHiddenSmall = document.querySelector('.hidden-small');
 
@@ -13,4 +13,16 @@ export default function togglePopup() {
             menuButtonLarge.style.display = 'none';
         }
     }, false);
+
+    //
+    const beforeScrollCoord = topMenu.getBoundingClientRect();
+    window.addEventListener(`scroll`, () => {
+       if (window.pageYOffset > beforeScrollCoord.y){
+        topMenu.style.position = 'fixed';
+       }else{
+        topMenu.style.position = 'relative';
+       }
+    }, false);
+
 }
+
