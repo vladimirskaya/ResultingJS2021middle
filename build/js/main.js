@@ -217,8 +217,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_togglePopup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/togglePopup */ "./modules/togglePopup.js");
 /* harmony import */ var _modules_burgerMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/burgerMenu */ "./modules/burgerMenu.js");
 /* harmony import */ var _modules_selectClubs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/selectClubs */ "./modules/selectClubs.js");
-/* harmony import */ var _modules_checkInputFormData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/checkInputFormData */ "./modules/checkInputFormData.js");
-/* harmony import */ var _modules_sendForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/sendForm */ "./modules/sendForm.js");
+/* harmony import */ var _modules_genMainSlider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/genMainSlider */ "./modules/genMainSlider.js");
+/* harmony import */ var _modules_checkInputFormData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/checkInputFormData */ "./modules/checkInputFormData.js");
+/* harmony import */ var _modules_sendForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/sendForm */ "./modules/sendForm.js");
+
 
 
 
@@ -229,9 +231,10 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_modules_togglePopup__WEBPACK_IMPORTED_MODULE_3__.default)();
 (0,_modules_burgerMenu__WEBPACK_IMPORTED_MODULE_4__.default)();
+(0,_modules_genMainSlider__WEBPACK_IMPORTED_MODULE_6__.default)();
 (0,_modules_selectClubs__WEBPACK_IMPORTED_MODULE_5__.default)();
-(0,_modules_checkInputFormData__WEBPACK_IMPORTED_MODULE_6__.default)();
-(0,_modules_sendForm__WEBPACK_IMPORTED_MODULE_7__.default)();
+(0,_modules_checkInputFormData__WEBPACK_IMPORTED_MODULE_7__.default)();
+(0,_modules_sendForm__WEBPACK_IMPORTED_MODULE_8__.default)();
 
 /***/ }),
 
@@ -473,6 +476,55 @@ function checkInputFormData() {
       }
     });
   });
+}
+
+/***/ }),
+
+/***/ "./modules/genMainSlider.js":
+/*!**********************************!*\
+  !*** ./modules/genMainSlider.js ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ genMainSlider; }
+/* harmony export */ });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function genMainSlider() {
+  var mainSlider = document.querySelector('.main-slider'),
+      sliders = _toConsumableArray(mainSlider.children);
+
+  var mainIndex = 1;
+  console.log('mainSlider', sliders);
+  setInterval(changeSlide, 4000);
+
+  function changeSlide() {
+    sliders.forEach(function (elem, index) {
+      console.log('mainIndex', mainIndex);
+      elem.style.display = 'none';
+
+      if (index === mainIndex) {
+        elem.style.display = 'flex';
+        elem.style.transition = '2s ease 1s';
+        console.log('elem', elem);
+      }
+    });
+    if (mainIndex === sliders.length - 1) mainIndex = 0;else mainIndex++;
+    console.log('mainIndex', mainIndex);
+  }
 }
 
 /***/ }),
@@ -2199,7 +2251,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
-module.exports = __webpack_require__.p + "2740f8dbe5f4ea921b93.css";
+module.exports = __webpack_require__.p + "c8d575c42cd70e0da665.css";
 
 /***/ }),
 
@@ -2210,7 +2262,7 @@ module.exports = __webpack_require__.p + "2740f8dbe5f4ea921b93.css";
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
-module.exports = __webpack_require__.p + "ffeb87f4dcebf64906a4.css";
+module.exports = __webpack_require__.p + "9ce04a1f910674e6f942.css";
 
 /***/ }),
 
@@ -11164,7 +11216,7 @@ module.exports = __webpack_require__.p + "a85397ff7905d49e610f.jpg";
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "1d71c07f96145c2f1ecc"; }
+/******/ 		__webpack_require__.h = function() { return "4884e99b5dca6c929cb0"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
