@@ -1,42 +1,42 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const mode = process.env.NODE_ENV;
+
 const isDev = mode === 'development';
 
-const generateFilename = ext => isDev ?
-    `[name].${ext}` :
-    `[name].[contenthash].${ext}`;
+const generateFilename = ext => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
+
+//console.log('[path]',[path]);
 
 module.exports = {
-    entry: { //тут должен быть объект, или массив
-        main: ['./index.js', './mozaika.html', './schelkovo.html']
-        //mozaika: './mozaika.html'
-        //schelkovo: 
+    entry: { 
+        main: './index.js'
     },
     output: {
         filename: `./js/${generateFilename('js')}`,
         path: path.resolve(__dirname, 'build'),
+        assetModuleFilename: 'images/[hash][ext][query]',
         clean: true,
         environment: {
-            // The environment supports arrow functions ('() => { ... }').
             arrowFunction: false,
         },
 
     },
     mode,
-    context: path.resolve(__dirname, 'src'), // это базовая директория, абсл.путь, 
+    context: path.resolve(__dirname, 'src'), 
     plugins: [
-        new HtmlWebpackPlugin({
+        new HTMLWebpackPlugin({
             template: './index.html',
-            minify: false,
+            minify: {
+                collapseWhitespace: !isDev
+            },
         }),
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: `./css/${generateFilename('css')}`
-        }),
-        
+        // new MiniCssExtractPlugin({
+        //     filename: `./css/${generateFilename('css')}`
+        // }),
+
     ],
     module: {
         rules: [{
@@ -52,31 +52,17 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [{
-                    loader:  MiniCssExtractPlugin.loader,
-                    options: {
-                        publicPath: '../',
-                    }
-                }, 
-                    'css-loader']
+                use: [ 'style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|jpe?g|svg|gif)$/i,
                 type: 'asset/resource',
-            //     use: {
-            //         loader: 'file-loader',
-            //         options: {
-            //             name: '[path][name].[ext]'
-            //         }
-            //     }
             },
             {
                 test: /\.(eot|ttf|woff|woff2|otf)$/i,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[path][name].[ext]'
-                    }
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[hash][ext][query]'
                 }
             },
             {
@@ -87,13 +73,12 @@ module.exports = {
     },
     devServer: {
         contentBase: './build',
-        open: true, //открытый порт
-        hot: true, //  перезагрузка на горячую
+        open: true, 
+        hot: isDev, 
         port: 8081,
         compress: true,
         overlay: true,
         writeToDisk: true,
         historyApiFallback: true,
     },
-    devtool: isDev && 'source-map',
 }
