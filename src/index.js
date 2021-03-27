@@ -14,15 +14,16 @@ import slideLilCarousel from './modules/slideLilCarousel'
 import checkInputFormData from './modules/checkInputFormData'
 import sendForm from './modules/sendForm'
 import burgerMenuPopup from './modules/burgerMenuPopup.js'
-
+import slider from './modules/slideCarousel'
 import slideCarousel from './modules/kar'
 
 togglePopup();
 appearBurgerMenu();
 genMainSlider();
 selectClubs();
-slideLilCarousel();
-burgerMenuPopup()
+// slideLilCarousel();
+burgerMenuPopup();
+slider();
 // const kar = new SlideCarousel();
 // console.log(kar);
 // slideCarousel();

@@ -3,7 +3,7 @@ export default function slideLilCarousel() {
         wrapper = services.querySelector('.wrapper'),
         servicesSlides = services.querySelector('.services-slider');
 
-    // console.log(servicesSlides);
+    //  00000console.log(servicesSlides);
 
     let currentSlide = 0,
         interval;
@@ -28,7 +28,7 @@ export default function slideLilCarousel() {
         servicesSlides.insertAdjacentElement('beforeend', arr[0]);
     };
 
-    const startSlide = (time = 1000) => {
+    const startSlide = (time = 2500) => {
         interval = setInterval(autoPlaySlide, time, servicesSlides.children);
     };
     startSlide();
