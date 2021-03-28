@@ -15,7 +15,7 @@ import checkInputFormData from './modules/checkInputFormData'
 import sendForm from './modules/sendForm'
 import burgerMenuPopup from './modules/burgerMenuPopup.js'
 import sliderGallery from './modules/sliderGallery'
-import slideCarousel from './modules/kar'
+import calculator from './modules/calculator'
 
 togglePopup();
 appearBurgerMenu();
@@ -27,5 +27,6 @@ sliderGallery();
 // const kar = new SlideCarousel();
 // console.log(kar);
 // slideCarousel();
+calculator();
 checkInputFormData();
 sendForm();
