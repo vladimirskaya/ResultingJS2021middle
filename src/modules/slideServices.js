@@ -7,6 +7,8 @@ export default function slideServices() {
     slide.forEach(elem =>{
         elem.style.flex = ' 0 0 20%';
     })
+
+   
     servicesSliders.addEventListener("click", (event) => {
         event.preventDefault();
         let target = event.target.closest('a');

@@ -5,7 +5,8 @@ const sliderGallery = () => {
       slide = gallery.querySelectorAll(".slide");
 
     gallery.style.position = 'relative';
-  
+
+
     let dots = document.createElement('ul');
     dots.className = 'slider-dots';
     gallery.append(dots);
