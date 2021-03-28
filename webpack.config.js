@@ -29,6 +29,14 @@ module.exports = {
                 collapseWhitespace: !isDev
             },
         }),
+        new HTMLWebpackPlugin({
+            filename: 'mozaika.html',
+            template: './mozaika.html'
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'schelkovo.html',
+            template: './schelkovo.html'
+        }),
         // new MiniCssExtractPlugin({
         //     filename: `./css/${generateFilename('css')}`
         // }),
