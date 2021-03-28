@@ -71,7 +71,7 @@ module.exports = {
         contentBase: './build',
         open: true, 
         hot: isDev, 
-        port: 8081,
+        port: 8082,
         compress: true,
         overlay: true,
         writeToDisk: true,

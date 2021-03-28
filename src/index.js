@@ -10,20 +10,20 @@ import togglePopup from './modules/togglePopup'
 import appearBurgerMenu from './modules/burgerMenu'
 import selectClubs from './modules/selectClubs'
 import genMainSlider from './modules/genMainSlider'
-import slideLilCarousel from './modules/slideLilCarousel'
+import slideLilCarousel from './modules/slideServices'
 import checkInputFormData from './modules/checkInputFormData'
 import sendForm from './modules/sendForm'
 import burgerMenuPopup from './modules/burgerMenuPopup.js'
-import slider from './modules/slideCarousel'
+import sliderGallery from './modules/sliderGallery'
 import slideCarousel from './modules/kar'
 
 togglePopup();
 appearBurgerMenu();
 genMainSlider();
 selectClubs();
-// slideLilCarousel();
+slideServices();
 burgerMenuPopup();
-slider();
+sliderGallery();
 // const kar = new SlideCarousel();
 // console.log(kar);
 // slideCarousel();
