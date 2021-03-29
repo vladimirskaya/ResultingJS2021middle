@@ -15,13 +15,13 @@ export default function sendForm() {
       console.log("cancel standart answer");
       //проверка ,если все заполнено, то выводим сообщение в в отдельном окне, где-то там оно есть
       const formData = new FormData(form);
-      console.log(formData);
+
       let body = {};
       console.log(form.elements);
       formData.forEach((val, key) => {
         body[key] = val;
       }),
-        console.log(body);
+        console.log(formData);
 
       // вызов обещания с передачей ему данных из форм
       postData(body)
@@ -40,6 +40,7 @@ export default function sendForm() {
           }
         });
       clearInputs();
+      closePopup();
     });
 
     function postData(body) {
@@ -59,4 +60,15 @@ export default function sendForm() {
       }
     }
   });
+
+  function closePopup() {
+    document.addEventListener("click", (event) => {
+      let target = event.target;
+      if (
+        target.closest("div").matches(".close-form, overlay") ||
+        target.nadeName === "BUTTON"
+      )
+        thanks.style.display = "none";
+    });
+  }
 }
