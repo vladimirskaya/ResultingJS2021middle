@@ -58,7 +58,7 @@ export default function calculator() {
 
       // Получаем стоимость
       let cards = doc.querySelector(".cards-types").children;
-      // console.log(url, "дети контенейра .cards-types", cards);
+      console.log(url, "дети контенейра .cards-types", cards);
       let postfix = "s";
       //  / console.log("period + postfix", period + postfix);
       for (let i = 0; i < cards.length; i++) {
