@@ -28,5 +28,5 @@ scrollPage();
 // console.log(kar);
 // slideCarousel();
 calculator();
-//checkInputFormData();
+checkInputFormData();
 sendForm();
