@@ -3,20 +3,67 @@ export default function calculator() {
     cardOrder = cards.querySelector("#card_order"),
     cardLetoSchelkovo = document.getElementById("card_leto_schelkovo"),
     cardLetoMozaika = document.getElementById("card_leto_mozaika"),
-    price = cardOrder.querySelector(".price");
+    price = cardOrder.querySelector(".price"),
+    club = cardOrder.querySelector(".club"),
+    times = document.querySelector(".time").children;
   console.log(cardOrder);
+  let url = "mozaika.html",
+    period = 1;
 
   let finalPrice = price.children[2],
     coupon = price.children[0];
 
-  function getInfo({ period, adress, cost }) {
-    console.log(period, adress, cost);
-  }
+  cardOrder.addEventListener("click", (event) => {
+    let target = event.target;
+    console.log(target);
+
+    for (let i = 0; i < times.length; i++) {
+      if (target === times[i]) {
+        if (target.nodeName === "LABEL") {
+          console.log("нажали на лабель", target);
+          period = target.previousElementSibling.value;
+        } else if (target.nodeName === "INPUT") {
+          console.log("нажали на инпут", target);
+          period = target.value;
+        }
+      }
+    }
+
+    console.log("найденный период", period);
+
+    if (target === cardLetoSchelkovo) url = "schelkovo.html";
+    else if (target === cardLetoMozaika) url = "mozaika.html";
+    console.log(url);
+    // console.log("clubbbb", clubs, cardLetoSchelkovo, cardLetoMozaika);
+  });
 
   cardOrder.addEventListener("change", (event) => {
-    let url,
-      target = event.target;
+    let target = event.target;
     console.log(target);
+
+    const getCost = (html) => {
+      // This is the HTML from our response as a text string
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, "text/html");
+      console.log("doc", doc);
+
+      // Получаем стоимость
+      let cards = doc.querySelector(".cards-types").children;
+      console.log(url, "дети контенейра .cards-types", cards);
+      let postfix = "s";
+      console.log("period + postfix", period + postfix);
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].value === period + postfix) {
+          let label = cards[i].nextElementSibling;
+          console.log("label", label.innerHTML);
+
+          finalPrice.innerHTML = label.querySelector(".cost").innerHTML;
+          break;
+        }
+      }
+      //   console.log(cards);
+    };
+
     if (target.closest("div") === coupon) {
       if (coupon.children[0].value.toLowerCase() === "тело2019") {
         finalPrice.innerHTML = Math.round(
@@ -24,27 +71,14 @@ export default function calculator() {
         );
       }
     }
-    console.log("xm: ", target, cardLetoSchelkovo, cardLetoMozaika);
-    if (target === cardLetoSchelkovo) url = "schelkovo.html";
-    else if (target === cardLetoMozaika) url = "mozaika.html";
-    else {
-      console.log("не прошло: ", target, cardLetoSchelkovo, cardLetoMozaika);
-      return;
-    }
-    console.log(url);
+
     fetch(url)
       .then(function (response) {
         // The API call was successful!
         return response.text();
       })
       .then(function (html) {
-        // This is the HTML from our response as a text string
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(html, "text/html");
-
-        // Get the image file
-        const info = doc.querySelector(".cards-types");
-        console.log(info.children);
+        getCost(html);
       })
       .catch(function (err) {
         // There was an error
@@ -64,6 +98,7 @@ export default function calculator() {
     //     let info = data.querySelector(".card-types");
     //     console.log(info);
     //   } else console.log("mist");
+
+    //   });
   });
-  //   });
 }
