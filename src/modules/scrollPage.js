@@ -3,7 +3,6 @@ export default function scrollPage() {
     headerHeight = document
       .querySelector(".header-main")
       .getBoundingClientRect().height;
-  console.log(toTop);
 
   window.addEventListener("scroll", function (e) {
     let last_known_scroll_position = window.scrollY;

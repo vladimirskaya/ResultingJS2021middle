@@ -25,8 +25,6 @@ slideServices();
 burgerMenuPopup();
 sliderGallery();
 scrollPage();
-// console.log(kar);
-// slideCarousel();
 calculator();
 checkInputFormData();
 sendForm();

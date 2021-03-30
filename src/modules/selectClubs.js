@@ -10,16 +10,6 @@ export default function selectClubs() {
         } else {
           elem.style.display = "block";
           elem.classList.add("open");
-          let liClubs = [...document.querySelector(".open").children];
-          console.log(liClubs);
-          liClubs.forEach((li) => {
-            li.addEventListener("click", (event) => {
-              if (event.target === li.children[0]) {
-                // event.preventDefault();
-                console.log(event.target);
-              }
-            });
-          });
         }
       }
     });

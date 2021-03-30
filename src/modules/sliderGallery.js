@@ -68,7 +68,7 @@ const sliderGallery = () => {
     event.preventDefault();
     let target = event.target.closest("a");
     if (!target) target = event.target.closest("li");
-    console.log("target", target);
+    // console.log("target", target);
 
     if (!target) return;
     if (!target.matches(".dot, .slider-arrow")) return;
@@ -77,17 +77,17 @@ const sliderGallery = () => {
     prevSlide(sliderDots, currentSlide);
 
     if (target.matches("#arrow-right")) {
-      console.log("next");
+      // console.log("next");
       currentSlide++;
     } else if (target.matches("#arrow-left")) {
       currentSlide--;
-      console.log("back");
+      // console.log("back");
     } else if (target.matches(".dot")) {
-      console.log("по точкам^", sliderDots);
+      // console.log("по точкам^", sliderDots);
       sliderDots.forEach((elem, index) => {
         if (elem === target) {
           currentSlide = index;
-          console.log("нужна картинка", index);
+          // console.log("нужна картинка", index);
         }
       });
     }

@@ -14,17 +14,17 @@ export default function sendForm() {
     card_check = document.getElementById("card_check"),
     check1 = document.getElementById("check1");
   let checkAgree = document.querySelectorAll("form>input[name]");
-  console.log("checkAgree", checkAgree);
+  // console.log("checkAgree", checkAgree);
 
   let forms = [...document.forms];
-  console.log(forms);
+  // console.log(forms);
   /*отправлено, ошибка). В последних двух состояниях 
     необходимо заменить сам контент модального окна на оповещение. */
   let btn;
 
   forms.forEach((form, index) => {
     //получаем чекбоксы
-    console.log("form[check]", form["check"]);
+    // console.log("form[check]", form["check"]);
     form.addEventListener("mouseover", (event) => {
       let target = event.target;
       btn = form.querySelector("button");
@@ -52,7 +52,7 @@ export default function sendForm() {
     });
 
     form.addEventListener("submit", (event) => {
-      console.log(event);
+      // console.log(event);
       event.preventDefault();
 
       let popup = form.closest("div.popup");
@@ -65,24 +65,24 @@ export default function sendForm() {
       formData.forEach((val, key) => {
         body[key] = val;
       }),
-        console.log("body ", body);
+        // console.log("body ", body);
 
-      // вызов обещания с передачей ему данных из форм
-      postData(body)
-        .then((response) => {
-          //console.log(response);
-          if (response.status !== 200) {
-            throw new Error("Status network not 200");
-          }
-          // outputPopup(workMessage);
-        })
-        // ловим возможную ошибку
-        .catch((error) => {
-          if (!!error) {
-            //console.log(error);
-            outputPopup(errorMessage);
-          }
-        });
+        // вызов обещания с передачей ему данных из форм
+        postData(body)
+          .then((response) => {
+            //console.log(response);
+            if (response.status !== 200) {
+              throw new Error("Status network not 200");
+            }
+            // outputPopup(workMessage);
+          })
+          // ловим возможную ошибку
+          .catch((error) => {
+            if (!!error) {
+              //console.log(error);
+              outputPopup(errorMessage);
+            }
+          });
       outputPopup();
     });
   });
@@ -99,7 +99,7 @@ export default function sendForm() {
 
   function outputPopup(message) {
     let thanks = document.getElementById("thanks");
-    console.log(thanks);
+    // console.log(thanks);
     thanks.style.display = "block";
     const content = thanks.querySelector(".form-content");
     if (!!message) {

@@ -61,7 +61,7 @@ export default function checkInputFormData() {
 
           if (/^\+\d\(\d{3}\)\d{4}/.test(value)) {
             value = value.replace(/\(*\)*\-*/g, "");
-            console.log(value);
+            // console.log(value);
             value =
               value.slice(0, 2) +
               "(" +
