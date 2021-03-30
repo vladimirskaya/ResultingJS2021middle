@@ -1,8 +1,14 @@
-import { container } from "webpack";
-
 export default function sendForm() {
-  const errorMessage = `Что-то пошло не так.<br> Обратитесь, пожалуйста, позже.`,
-    formContentThanks = thanks.querySelector(".form-content").children[1],
+  const errorMessage = [
+      "Приносим извинения!",
+      `Что-то пошло не так.\nОбратитесь, пожалуйста, позже.`,
+    ],
+    workMessage = ["", `Ваши данные \nпередаются.`],
+    successMessage = [
+      "Спасибо!",
+      `Ваши данные успешно переданы. \n Мы скоро свяжемся в Вами!`,
+    ];
+  const formContentThanks = thanks.querySelector(".form-content").children[1],
     check2 = document.getElementById("check2"),
     check = document.getElementById("check"),
     card_check = document.getElementById("card_check"),
@@ -68,7 +74,7 @@ export default function sendForm() {
           if (response.status !== 200) {
             throw new Error("Status network not 200");
           }
-          outputPopup();
+          // outputPopup(workMessage);
         })
         // ловим возможную ошибку
         .catch((error) => {
@@ -97,15 +103,27 @@ export default function sendForm() {
     thanks.style.display = "block";
     const content = thanks.querySelector(".form-content");
     if (!!message) {
-      content.children[0].textContent = "";
-      content.children[1].textContent = message;
+      content.children[0].textContent = message[0];
+      content.children[1].textContent = message[1];
     }
     clearInputs();
+    closeForm(thanks);
+    function closeForm(paren) {
+      paren.addEventListener("click", (event) => {
+        let target = event.target;
+        if (
+          target.closest("div").matches(".close-btn, .close-form") ||
+          target.nodeName === "BUTTON"
+        ) {
+          paren.style.display = "none";
+        }
+      });
+    }
 
     function clearInputs() {
-      const forms = document.forms;
+      const forms = [...document.forms];
       forms.forEach((form) => {
-        elements = form.elements;
+        const elements = [...form.elements];
         elements.forEach((elem) => {
           if (elem.type === "checkbox") elem.checked = false;
           else if (elem.type === "input") elem.value = "";

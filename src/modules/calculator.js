@@ -39,7 +39,8 @@ export default function calculator() {
     // console.log(target);
 
     const getPromo = () => {
-      let promo = cardOrder.elements.name[0].value;
+      let promo = cardOrder.elements.promo.value;
+      // console.log("promo", promo);
       if (promo.toLowerCase() === "тело2019") {
         finalPrice.innerHTML = Math.round(
           0.7 * parseFloat(cardOrder.querySelector("#price-total").innerHTML)
@@ -47,9 +48,6 @@ export default function calculator() {
       }
     };
 
-    if (target === cardOrder.elements.name[0]) {
-      getPromo();
-    }
     const getCost = (html) => {
       // This is the HTML from our response as a text string
       let parser = new DOMParser();
