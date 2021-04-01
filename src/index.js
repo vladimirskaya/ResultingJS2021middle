@@ -16,14 +16,18 @@ import burgerMenuPopup from "./modules/burgerMenuPopup.js";
 import sliderGallery from "./modules/sliderGallery";
 import calculator from "./modules/calculator";
 import scrollPage from "./modules/scrollPage";
+import Slider from "./modules/sliderClass.js"
 
 togglePopup();
 appearBurgerMenu();
-genMainSlider();
+// genMainSlider();
+const mainSlider = new Slider('.main-slider', '.slide');
+mainSlider.init();
+
 selectClubs();
 slideServices();
 burgerMenuPopup();
-sliderGallery();
+// sliderGallery();
 scrollPage();
 calculator();
 checkInputFormData();

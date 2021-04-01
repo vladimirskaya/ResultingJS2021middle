@@ -37,6 +37,18 @@ export default function sendForm() {
             btn.disabled = true;
             btn.style.opacity = "0.5";
             btn.title = "Необходимо подтвердить согласие на обработку данных.";
+            form["check"].nextElementSibling.textContent =
+              "Необходимо подтвердить согласие на обработку персональных данных.";
+            form["check"].nextElementSibling.style.cssText = `
+            color: red;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    text-align: justify;
+    margin: 0 auto;
+    position: relative;`;
           }
         }
       }
@@ -48,6 +60,17 @@ export default function sendForm() {
         btn.disabled = false;
         btn.style.opacity = "1";
         btn.title = "";
+        form["check"].nextElementSibling.textContent =
+          "Я СОГЛАСЕН НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ";
+        form["check"].nextElementSibling.style.color = `color: #fff;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    text-align: justify;
+    margin: 0 auto;
+    position: relative;`;
       } else return;
     });
 

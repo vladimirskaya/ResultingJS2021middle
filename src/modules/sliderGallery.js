@@ -5,6 +5,10 @@ const sliderGallery = () => {
     slide = gallery.querySelectorAll(".slide");
 
   gallery.style.position = "relative";
+  for (let i = 0; i < slide.length; i++) {
+    slide[i].style.transition = "all 2s ease-in-out 1s";
+  }
+  // transition: all 1.2s ease-in-out;
 
   let dots = document.createElement("ul");
   dots.className = "slider-dots";
@@ -117,7 +121,7 @@ const sliderGallery = () => {
     }
   });
 
-  startSlide(1500);
+  startSlide(3000);
 };
 
 export default sliderGallery;

@@ -5,7 +5,8 @@ export default function calculator() {
     cardLetoMozaika = document.getElementById("card_leto_mozaika"),
     price = cardOrder.querySelector(".price"),
     // club = cardOrder.querySelector(".club"),
-    times = document.querySelector(".time").children;
+    time = document.querySelector(".time"),
+    times = time.querySelectorAll("input");
 
   let url = "mozaika.html",
     period = 1;
@@ -18,13 +19,13 @@ export default function calculator() {
 
     for (let i = 0; i < times.length; i++) {
       if (target === times[i]) {
-        if (target.nodeName === "LABEL") {
-          // console.log("нажали на лабель", target);
-          period = target.previousElementSibling.value;
-        } else if (target.nodeName === "INPUT") {
-          // console.log("нажали на инпут", target);
-          period = target.value;
-        }
+        // if (target.nodeName === "LABEL") {
+        //   // console.log("нажали на лабель", target);
+        //   period = target.previousElementSibling.value;
+        // } else if (target.nodeName === "INPUT") {
+        //   // console.log("нажали на инпут", target);
+        period = target.value;
+        // }
       }
     }
 
